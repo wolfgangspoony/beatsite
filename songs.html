@@ -1,72 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BeatSite - Songs</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <style>
-    /* Additional styles specific to the songs page */
-    .song-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Song Store</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gill+Sans+MT&display=swap');
 
-    .song-card {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('C:/Users/Wolfgang/Documents/BeatSite/images/bg1.jpg');
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  .parallax {
+    background-image: url('C:/Users/Wolfgang/Documents/BeatSite/images/bg1.jpg');
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    height: 300px;
+  }
+  .content-container {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  .songs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .song-module {
+    width: 30%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+  }
+  .song-image img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .song-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+  }
+  .button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 30%;
+    height: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  .button:hover {
+    background-color: #e0e0e0;
+  }
+  .song-title {
+    font-family: 'Gill Sans MT', sans-serif;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+  audio {
+    display: none;
+  }
 
-    .song-title {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .audio-player {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-    }
-
-    .audio-player audio {
+  /* Mobile view */
+  @media only screen and (max-width: 768px) {
+    .song-module {
       width: 100%;
     }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <!-- Include the header content here if you have one -->
-  </header>
-
-  <main>
-    <div class="song-list">
-      <!-- Song 1 -->
-      <div class="song-card">
-        <h2 class="song-title">Song 1</h2>
-        <div class="audio-player">
-          <audio controls src="audio/song1.mp3" type="audio/mpeg"></audio>
-        </div>
+<div class="parallax"></div>
+<div class="content-container">
+  <h1>Welcome to the Song Store</h1>
+  <p>Explore our collection and discover the perfect soundtrack for your next project.</p>
+  <div class="songs-grid">
+    <!-- Song Module 1 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/1.png" alt="Song Title">
       </div>
-
-      <!-- Song 2 -->
-      <div class="song-card">
-        <h2 class="song-title">Song 2</h2>
-        <div class="audio-player">
-          <audio controls src="audio/song2.mp3" type="audio/mpeg"></audio>
-        </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player1')" id="play-button1">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player1')">&#8634;</div>
+        <div class="button" id="buy-button1">$</div>
       </div>
-
-      <!-- Add more song cards here -->
+      <div class="song-title"><h3>BATHROOM</h3></div>
+      <audio id="audio-player1">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/bathroom.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
-  </main>
+    <!-- Song Module 2 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/2.png" alt="Song Title">
+      </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player2')" id="play-button2">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player2')">&#8634;</div>
+        <div class="button" id="buy-button2">$</div>
+      </div>
+      <div class="song-title"><h3>BUZZ</h3></div>
+      <audio id="audio-player2">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/buzz.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <!-- Song Module 3 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/3.png" alt="Song Title">
+      </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player3')" id="play-button3">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player3')">&#8634;</div>
+        <div class="button" id="buy-button3">$</div>
+      </div>
+      <div class="song-title"><h3>CAVEMAN</h3></div>
+      <audio id="audio-player3">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/caveman.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <!-- Song Module 4 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/4.png" alt="Song Title">
+      </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player4')" id="play-button4">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player4')">&#8634;</div>
+        <div class="button" id="buy-button4">$</div>
+      </div>
+      <div class="song-title"><h3>DANCE</h3></div>
+      <audio id="audio-player4">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/dance.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <!-- Song Module 5 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/5.png" alt="Song Title">
+      </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player5')" id="play-button5">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player5')">&#8634;</div>
+        <div class="button" id="buy-button5">$</div>
+      </div>
+      <div class="song-title"><h3>EWPP</h3></div>
+      <audio id="audio-player5">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/ewpp.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <!-- Song Module 6 -->
+    <div class="song-module">
+      <div class="song-image">
+        <img src="C:/Users/Wolfgang/Documents/BeatSite/images/6.png" alt="Song Title">
+      </div>
+      <div class="song-buttons">
+        <div class="button" onclick="playPause('audio-player6')" id="play-button6">&#9658;</div>
+        <div class="button" onclick="resetAudio('audio-player6')">&#8634;</div>
+        <div class="button" id="buy-button6">$</div>
+      </div>
+      <div class="song-title"><h3>LUNCH</h3></div>
+      <audio id="audio-player6">
+        <source src="C:/Users/Wolfgang/Documents/BeatSite/songs/lunch.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+</div>
+<div class="parallax"></div>
 
-  <footer>
-    <!-- Include the footer content here if you have one -->
-  </footer>
+<script>
+  function playPause(playerID) {
+    var audio = document.getElementById(playerID);
+    var playButton = document.getElementById('play-button' + playerID.charAt(playerID.length - 1));
+
+    if (audio.paused) {
+      audio.play();
+      playButton.innerHTML = "&#10074;&#10074;";
+    } else {
+      audio.pause();
+      playButton.innerHTML = "&#9658;";
+    }
+  }
+
+  function resetAudio(playerID) {
+    var audio = document.getElementById(playerID);
+    var playButton = document.getElementById('play-button' + playerID.charAt(playerID.length - 1));
+
+    audio.currentTime = 0;
+    playButton.innerHTML = "&#9658;";
+  }
+</script>
 </body>
 </html>
